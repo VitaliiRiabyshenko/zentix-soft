@@ -28,13 +28,11 @@ class ContactsServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'contacts');
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
-        $this->publishesMigrations([
-            __DIR__ . '/../database/migrations' => database_path('migrations'),
-        ]);
-
         $this->publishes([
+            __DIR__ . '/../database/migrations' => database_path('migrations'),
             __DIR__ . '/../resources/views' => resource_path('views/vendor/contacts'),
-        ]);
+        ], 'contacts');
+        
 
         Paginator::useBootstrap();
     }
